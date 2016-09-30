@@ -20,9 +20,9 @@ namespace CustomList
             myList.Add(6);
             myList.Add(2);
             myList.Add(1);
-            //myList.Remove(8);
-            //myList.Remove(1);
-            //myList.Remove(3);
+            myList.Remove(8);
+            myList.Remove(7);
+            myList.Remove(6);
 
             myOtherList.Add(1);
             myOtherList.Add(2);
@@ -32,9 +32,9 @@ namespace CustomList
             myOtherList.Add(6);
             myOtherList.Add(7);
             myOtherList.Add(8);
-            myOtherList.Remove(1);
-            myOtherList.Remove(8);
-            myOtherList.Remove(4);
+            //myOtherList.Remove(7);
+            //myOtherList.Remove(8);
+            //myOtherList.Remove(6);
             //Console.WriteLine(myOtherList);
             //myList.ToString();
             //foreach (object o in myList)
@@ -46,11 +46,12 @@ namespace CustomList
             //CustomList<int> subtractCopiesFromList = myList - myOtherList;
             //Console.WriteLine(subtractCopiesFromList);
             //Console.WriteLine(myList);
-            //Console.WriteLine("Zipper Output: {0}", myList.Zipper(myList, myOtherList));
+            //myList.Sort();
+            Console.WriteLine("Zipper Output: {0}", myList.Zipper(myList, myOtherList));
             //Console.WriteLine("First {0}", myList);
-            myList.Sort();
+            //myList.Sort();
             //Console.WriteLine("Second {0}", myList);
-            Console.WriteLine("Testing Sort {0}", myList);
+            //Console.WriteLine("Testing Sort {0}", myList);
 
 
 

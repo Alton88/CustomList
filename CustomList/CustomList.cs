@@ -126,20 +126,20 @@ namespace CustomList
             CustomList<T> smallerList = new CustomList<T>();
             if (listOne.Count > listTwo.Count)
             {
-                smallerList = listOne;
-                biggerList = listTwo;              
+                smallerList = listTwo;
+                biggerList = listOne;              
             }
             else {
-                smallerList = listTwo;
-                biggerList = listOne;
+                smallerList = listOne;
+                biggerList = listTwo;
             }
-            var temporaryValue = smallerList.GetEnumerator();
+            var temporaryValue = biggerList.GetEnumerator();
 
             try
             {
-                foreach (T itemInBiggerList in biggerList)
+                foreach (T itemInSmallerList in smallerList)
                 {
-                    zipperedList.Add(itemInBiggerList);
+                    zipperedList.Add(itemInSmallerList);
                     if (temporaryValue.MoveNext()) { zipperedList.Add(temporaryValue.Current); }
                 }
             }
