@@ -12,7 +12,6 @@ namespace CustomList
         private T[] items;
         private int capacity;
         private int manyItems;
-
         public CustomList()
         {
             capacity = 5;
@@ -34,7 +33,7 @@ namespace CustomList
             catch (Exception e) { Console.WriteLine(e.Message); }
             ++manyItems;
         }
-        public void EnsureCapacity(int minimumCapacity)
+        private void EnsureCapacity(int minimumCapacity)
         {
             T[] biggerArray;
 
@@ -113,31 +112,13 @@ namespace CustomList
             }
             return temporaryList;
         }
-        public static CustomList<T> CopyList(CustomList<T> originalList)
-        {
-            CustomList<T> copyList = new CustomList<T>();
-
-            foreach (T element in originalList)
-            {
-                copyList.Add(element);
-            }
-            return copyList;
-        }
         public static CustomList<T> operator -(CustomList<T> listOne, CustomList<T> listTwo)
         {
-            CustomList<T> temporaryList = CopyList(listOne);
-
-            foreach (T itemOne in listOne)
+            foreach (T itemTwo in listTwo)
             {
-                foreach (T itemTwo in listTwo)
-                {
-                    if (itemOne.Equals(itemTwo))
-                    {
-                        temporaryList.Remove(itemOne);
-                    }
-                }
+                listOne.Remove(itemTwo);
             }
-            return temporaryList;
+            return listOne;
         }
         public CustomList<T> Zipper(CustomList<T> listOne, CustomList<T> listTwo){
             CustomList<T> zipperedList = new CustomList<T>();
@@ -153,6 +134,7 @@ namespace CustomList
                 biggerList = listOne;
             }
             var temporaryValue = smallerList.GetEnumerator();
+
             try
             {
                 foreach (T itemInBiggerList in biggerList)
@@ -178,14 +160,14 @@ namespace CustomList
                     j = i - 1;
                     while (j >= 0 && items[j].CompareTo(items[j + 1]) > 0)
                     {
-                        Swap(items, j);
+                        Swap(j);
                         j = j - 1;
                     }
                 }
             }
             catch (Exception e) { Console.WriteLine(e.Message);  }
         }  
-        public void Swap(T[] array, int index) {
+        private void Swap(int index) {
             T temporaryVariable = default(T);
             try
             {
