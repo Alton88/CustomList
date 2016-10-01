@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Console;
 
 namespace CustomList
 {
@@ -53,9 +54,12 @@ namespace CustomList
             myList.Sort();
             //Console.WriteLine("Second {0}", myList);
             Console.WriteLine("Testing Sort {0}", myList);
+            //int? a = null;
+            //int b = 1;
+            //int c = 2;
 
-
-
+            //Console.WriteLine($"a is {a} b is {b} c is {c:C}");
+            //WriteLine("Test");
             Console.Read();
         }
     }
