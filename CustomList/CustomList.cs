@@ -122,18 +122,18 @@ namespace CustomList
         public CustomList<T> Zipper(CustomList<T> listTwo){
             CustomList<T> zipperedList = new CustomList<T>();
             
-            var temporaryValue = listTwo.GetEnumerator();
+            var listTwoItem = listTwo.GetEnumerator();
             
             try
             {
-                foreach (T item in this)
+                foreach (T listOneItem in this)
                 {           
-                    if (temporaryValue.MoveNext()) {
-                        zipperedList.Add(item);
-                        zipperedList.Add(temporaryValue.Current); }
+                    if (listTwoItem.MoveNext()) {
+                        zipperedList.Add(listOneItem);
+                        zipperedList.Add(listTwoItem.Current); }
                     else {
                         if (listTwo.Count == 0) {
-                            zipperedList.Add(item);
+                            zipperedList.Add(listOneItem);
                         }
                         break;  
                     }
