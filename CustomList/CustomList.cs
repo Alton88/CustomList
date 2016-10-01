@@ -53,27 +53,26 @@ namespace CustomList
         }
         public bool Remove(T target)
         {
-            int index = -1;
+            bool foundTarget = false;
 
-            for (int i = 0; i < manyItems; ++i)
+            try
             {
-                if (items[i].Equals(target)) { index = i; }
-            }
-
-            if (index >= 0)
-            {
-                --manyItems;
-
-                try { 
-                    for (int i = 0; i < manyItems; ++i) {
-                        if (i >= index) { items[i] = items[i + 1]; }
+                for (int i = 0; i < manyItems; ++i)
+                {
+                    if (items[i].Equals(target))
+                    {
+                        foundTarget = true;                   
+                    }
+                    if (foundTarget)
+                    {
+                        items[i] = items[i + 1];
                     }
                 }
-                catch (Exception e) { Console.WriteLine(e.Message); }
-
-                return true;
             }
-            else { return false; }
+            catch (Exception e) { Console.WriteLine(e.Message); }
+
+            if (foundTarget) { --manyItems; }
+            return foundTarget;
         }
         public IEnumerator<T> GetEnumerator()
         {
@@ -101,16 +100,16 @@ namespace CustomList
         }
         public static CustomList<T> operator +(CustomList<T> listOne, CustomList<T> listTwo)
         {
-            CustomList<T> temporaryList = new CustomList<T>();
+            CustomList<T> addedList = new CustomList<T>();
             foreach (T element in listOne)
             {
-                temporaryList.Add(element);
+                addedList.Add(element);
             }
             foreach (T element in listTwo)
             {
-                temporaryList.Add(element);
+                addedList.Add(element);
             }
-            return temporaryList;
+            return addedList;
         }
         public static CustomList<T> operator -(CustomList<T> listOne, CustomList<T> listTwo)
         {
@@ -120,27 +119,24 @@ namespace CustomList
             }
             return listOne;
         }
-        public CustomList<T> Zipper(CustomList<T> listOne, CustomList<T> listTwo){
+        public CustomList<T> Zipper(CustomList<T> listTwo){
             CustomList<T> zipperedList = new CustomList<T>();
-            CustomList<T> biggerList = new CustomList<T>();
-            CustomList<T> smallerList = new CustomList<T>();
-            if (listOne.Count > listTwo.Count)
-            {
-                smallerList = listTwo;
-                biggerList = listOne;              
-            }
-            else {
-                smallerList = listOne;
-                biggerList = listTwo;
-            }
-            var temporaryValue = biggerList.GetEnumerator();
-
+            
+            var temporaryValue = listTwo.GetEnumerator();
+            
             try
             {
-                foreach (T itemInSmallerList in smallerList)
-                {
-                    zipperedList.Add(itemInSmallerList);
-                    if (temporaryValue.MoveNext()) { zipperedList.Add(temporaryValue.Current); }
+                foreach (T item in this)
+                {           
+                    if (temporaryValue.MoveNext()) {
+                        zipperedList.Add(item);
+                        zipperedList.Add(temporaryValue.Current); }
+                    else {
+                        if (listTwo.Count == 0) {
+                            zipperedList.Add(item);
+                        }
+                        break;  
+                    }
                 }
             }
             catch (Exception e) { Console.WriteLine(e.Message);  }
@@ -168,12 +164,12 @@ namespace CustomList
             catch (Exception e) { Console.WriteLine(e.Message);  }
         }  
         private void Swap(int index) {
-            T temporaryVariable = default(T);
+            T holdFirstVariable = default(T);
             try
             {
-                temporaryVariable = items[index + 1];
+                holdFirstVariable = items[index + 1];
                 items[index + 1] = items[index];
-                items[index] = temporaryVariable;
+                items[index] = holdFirstVariable;
             }         
             catch (Exception e) { Console.WriteLine(e.Message);  }
 }
