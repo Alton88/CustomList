@@ -121,7 +121,7 @@ namespace CustomList
         }
         public CustomList<T> Zipper(CustomList<T> listTwo){
             CustomList<T> zipperedList = new CustomList<T>();
-            
+
             var listTwoItem = listTwo.GetEnumerator();
             
             try
@@ -131,10 +131,7 @@ namespace CustomList
                     if (listTwoItem.MoveNext()) {
                         zipperedList.Add(listOneItem);
                         zipperedList.Add(listTwoItem.Current); }
-                    else {
-                        if (listTwo.Count == 0) {
-                            zipperedList.Add(listOneItem);
-                        }
+                    else {                       
                         break;  
                     }
                 }

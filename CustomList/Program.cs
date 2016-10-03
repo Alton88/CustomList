@@ -25,17 +25,17 @@ namespace CustomList
             //myList.Remove(7);
             //myList.Remove(6);
 
-            myOtherList.Add(1);
-            myOtherList.Add(2);
-            myOtherList.Add(3);
-            myOtherList.Add(4);
-            myOtherList.Add(5);
-            myOtherList.Add(6);
-            myOtherList.Add(7);
-            myOtherList.Add(8);
-            myOtherList.Remove(7);
-            myOtherList.Remove(8);
-            myOtherList.Remove(6);
+            //myOtherList.Add(1);
+            //myOtherList.Add(2);
+            //myOtherList.Add(3);
+            //myOtherList.Add(4);
+            //myOtherList.Add(5);
+            //myOtherList.Add(6);
+            //myOtherList.Add(7);
+            //myOtherList.Add(8);
+            //myOtherList.Remove(7);
+            //myOtherList.Remove(8);
+            //myOtherList.Remove(6);
             //Console.WriteLine(myOtherList);
             //myList.ToString();
             //foreach (object o in myList)
@@ -48,12 +48,12 @@ namespace CustomList
             //myList.Sort();
             //Console.WriteLine(subtractCopiesFromList);
             //Console.WriteLine(myList);
-            //myList.Sort();
-            //Console.WriteLine("Zipper Output: {0}", myList.Zipper(myOtherList));
-            //Console.WriteLine("First {0}", myList);
             myList.Sort();
+            Console.WriteLine("Zipper Output: {0}", myList.Zipper(myOtherList));
+            //Console.WriteLine("First {0}", myList);
+            //myList.Sort();
             //Console.WriteLine("Second {0}", myList);
-            Console.WriteLine("Testing Sort {0}", myList);
+            //Console.WriteLine("Testing Sort {0}", myList);
             //int? a = null;
             //int b = 1;
             //int c = 2;
